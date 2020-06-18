@@ -5,8 +5,7 @@
 - Add database credentials to env. file
 - You can change moderator and manager email if you want. (Optional)
   You can find emails in /database/seeds/UsersTableSeeder.php  (Make sure that mail of manager and moderator is not same). 
-- composer update
-- npm install
+- composer install
 - php artisan key:generate
 - php artisan migrate:fresh --seed
 
