@@ -11,6 +11,7 @@
 - php artisan migrate:fresh --seed
 
 ## Google account
+
 Google smtp is used for sending mails. You can login to check mail are sent. 
 Go to sent tab to check sent mails.
 
