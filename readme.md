@@ -9,6 +9,10 @@
 - php artisan key:generate
 - php artisan migrate:fresh --seed
 
+If you have issue with permissions run
+
+sudo chmod -R 777 storage/*
+
 ## Google account
 
 Google smtp is used for sending mails. You can login to check mail are sent. 
