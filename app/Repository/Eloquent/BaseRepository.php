@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 
+/**
+ * BaseRepository: This is base repository for easier manipulatio with eloquent
+ */
 class BaseRepository implements EloquentRepositoryInterface
 {
     /**      

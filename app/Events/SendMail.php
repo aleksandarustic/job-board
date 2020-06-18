@@ -10,6 +10,9 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Mail\Mailable;
 
 
+/**
+ * SendMail: Event that notify Mail Sent listener to send mail .
+ */
 class SendMail
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;

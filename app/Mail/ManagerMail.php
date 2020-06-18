@@ -3,13 +3,15 @@
 namespace App\Mail;
 
 use App\Job;
-use App\User;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
+/**
+ * ManagerMail: Mailable object to manager
+ */
 class ManagerMail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -27,7 +29,7 @@ class ManagerMail extends Mailable
     }
 
     /**
-     * Build the message.
+     * Build the message With access to $job variable
      *
      * @return $this
      */

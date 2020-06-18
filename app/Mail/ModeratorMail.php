@@ -10,6 +10,9 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * ModeratorMail: Mailable object to Moderator
+ */
 class ModeratorMail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -29,7 +32,7 @@ class ModeratorMail extends Mailable
     }
 
     /**
-     * Build the message.
+     * Build the message with access to $job and $user
      *
      * @return $this
      */

@@ -4,36 +4,51 @@ namespace App\Http\Controllers;
 
 use App\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
+/**
+ * JobController
+ */
 class JobController extends Controller
 {
 
+    /**
+     * repo: inject JobRepository
+     *
+     * @var mixed
+     */
     private $repo;
+
     /**
      * Create a new controller instance.
+     * Injects JobRepository
      *
      * @return void
      */
     public function __construct(\App\Repository\JobRepositoryInterface $repo)
     {
         $this->repo = $repo;
-
-        $this->middleware('auth');
     }
 
 
     /**
-     * Display a listing of the resource.
+     * Returns all job offers in case that auth user is mediator and job offers that own manager is user is manager
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
 
-        $jobs = Job::orderBy('created_at', 'desc')->paginate(10);
+        $jobs = Job::orderBy('created_at', 'desc');
 
-        return view('jobs.index')->with('jobs', $jobs);
+        if (Auth::user()->role == 'manager') {
+            $jobs->where('user_id', Auth::user()->id);
+        }
+
+        return view('jobs.index')->with('jobs', $jobs->paginate(10));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -47,6 +62,8 @@ class JobController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * Check if all input is valid with request object
+     * Redirect to home page with message is job succesfuly created
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -61,9 +78,14 @@ class JobController extends Controller
 
             return redirect()->route('home');
         }
-
     }
-
+    
+    /**
+     * approve: Changes status of job offer to approved if token exists in database 
+     *
+     * @param  mixed $token
+     * @return void
+     */
     public function approve($token)
     {
         if ($this->repo->approve($token)) {
@@ -73,7 +95,13 @@ class JobController extends Controller
         }
     }
 
-
+    
+    /**
+     * reject: Changes status of job offer to reject if token exists in database 
+     *
+     * @param  mixed $token
+     * @return void
+     */
     public function reject($token)
     {
 

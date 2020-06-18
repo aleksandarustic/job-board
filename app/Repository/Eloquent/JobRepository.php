@@ -7,7 +7,9 @@ use App\Repository\JobRepositoryInterface;
 
 use Illuminate\Support\Facades\Auth;
 
-
+/**
+ * JobRepository: Contain main logic and operation for manipulation with job offers
+ */
 class JobRepository extends BaseRepository implements JobRepositoryInterface
 {
 
@@ -21,6 +23,12 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
         parent::__construct($model);
     }
 
+    /**
+     * approve: This function finds job with passed token and set status to approved and remove token from job model
+     *
+     * @param  mixed $token
+     * @return void
+     */
     public function approve($token)
     {
         $job = $this->model->where('token', $token)->first();
@@ -33,6 +41,12 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
         return $job;
     }
 
+    /**
+     * reject:This function finds job with passed token and set status to rejected and remove token from job model
+     *
+     * @param  mixed $token
+     * @return void
+     */
     public function reject($token)
     {
         $job = $this->model->where('token', $token)->first();
@@ -46,13 +60,21 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
     }
 
 
+    /**
+     * createJob: This function fill job with validated inputs ,and create token if this is first job for manager. 
+     *
+     * @param  mixed $data
+     * @return void
+     */
     public function createJob($data)
     {
         $model = new $this->model;
+        // Add Auth user id to job
         $model->user_id = Auth::id();
         $model->fill($data);
 
-        if ($this->isFirst($model->user_id)) {
+        if ($this->isFirst($model->user_id)) { // Check if this is first job
+            // Create random token
             $model->token = $this->createToken();
             $model->status = 'pending';
         } else {
@@ -62,6 +84,11 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
         return $model->save();
     }
 
+    /**
+     * createToken: Create random token that will be use in mail to approve and reject job offer posting
+     *
+     * @return void
+     */
     private function createToken()
     {
         do {
@@ -74,6 +101,12 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
     }
 
 
+    /**
+     * isFirst: Checks if this is first job for manager
+     *
+     * @param  mixed $user_id
+     * @return void
+     */
     private function isFirst($user_id)
     {
         return !$this->model->where('user_id', $user_id)->exists();
