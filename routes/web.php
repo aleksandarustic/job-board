@@ -11,15 +11,17 @@
 |
 */
 
-Route::get('/', 'PagesController@mainpage' );
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes(['register' => false]);
 
+Route::get('job/approve/{token}', 'JobController@approve')->name('job.approve');
 
-Route::group(['middleware' => ['auth'],'prefix' => 'dashboard'],function(){
+Route::get('job/reject/{token}', 'JobController@reject')->name('job.reject');;
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
 
     Route::get('/', 'DashboardController@index')->name('dashboard');
-    Route::resource('employee','EmployeeController');
-    Route::resource('company','CompanyController');
 
+    Route::resource('job', 'JobController');
 });

@@ -7,22 +7,13 @@
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 
 // Variables
-@import 'variables';
+// @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-@import '~admin-lte/dist/css/adminlte.css';
+@import '~admin-lte/build/scss/AdminLTE.scss';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
-
-.table-images{
-  max-width: 60px;
-}
-.error{
-  color: red;
-  padding-top: 1px;
-}
+@import "base";
+@import "components";
+@import "layout";

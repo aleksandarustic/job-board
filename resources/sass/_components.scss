@@ -1,0 +1,29 @@
+.card {
+    flex: 1 0;
+    box-shadow: var(--shadow-light);
+
+
+    &--md {
+        max-width: var(--breakpoint-md);
+    }
+
+    &--lg {
+        max-width: var(--breakpoint-lg);
+    }
+
+    &--centred {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.title {
+    font-size: 84px;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+
+    &--md {
+        font-size: 60px;
+    }
+}

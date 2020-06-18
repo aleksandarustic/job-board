@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use App\User;
 
 
 class UsersTableSeeder extends Seeder
@@ -14,14 +13,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-
-        User::truncate();
-
-        $user = new User();
-        $user->name = 'admin';
-        $user->email = 'admin@admin.com';
-        $user->password = Hash::make('password');
-        $user->save();
-
+        factory(App\User::class)->create(['role' => 'moderator', 'email' => 'moderator@gmail.com', 'password' => Hash::make('password')]);
+        factory(App\User::class)->create(['role' => 'manager', 'email' => 'manager@gmail.com', 'password' => Hash::make('password')]);
     }
 }
