@@ -19,9 +19,7 @@ Route::get('job/approve/{token}', 'JobController@approve')->name('job.approve');
 
 Route::get('job/reject/{token}', 'JobController@reject')->name('job.reject');;
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
-
-    Route::get('/', 'DashboardController@index')->name('dashboard');
+Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('job', 'JobController');
 });

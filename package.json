@@ -22,7 +22,6 @@
         "postcss-cli": "^4.1.1"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.13.0",
-        "admin-lte": "^3.0.5"
+        "@fortawesome/fontawesome-free": "^5.13.0"
     }
 }

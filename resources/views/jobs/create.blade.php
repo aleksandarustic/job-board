@@ -1,15 +1,9 @@
-@extends('layouts.dashboard')
-
-@section('breadcrumps')
-
-<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-<li class="breadcrumb-item"><a href="{{route('job.index')}}">Jobs</a></li>
-<li class="breadcrumb-item active">New Job</li>
-
-@endsection
+@extends('layouts.app')
 
 @section('content')
+
 <section class="section">
+
     <div class="card card--md card--centred">
         <div class="card-header">
             Create Job Offer
@@ -54,4 +48,5 @@
         </div>
     </div>
 </section>
+
 @endsection

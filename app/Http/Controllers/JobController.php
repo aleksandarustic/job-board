@@ -62,16 +62,6 @@ class JobController extends Controller
             return redirect()->route('home');
         }
 
-        // $job = new Job;
-
-        // $data = $request->validated();
-        // $data['user_id'] = $request->user()->id;
-
-        // if ($job->create($data)) {
-        //     return redirect()->route('home')->with('message', 'Job has been successfuly created');
-        // } else {
-        //     return redirect()->route('home');
-        // }
     }
 
     public function approve($token)

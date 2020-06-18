@@ -19,7 +19,6 @@
 
 html {
     box-sizing: border-box;
-    // font-size: 62.5%;
 
     @media only screen and (max-width:var(--breakpoint-xl)) {
         font-size: 90%;
@@ -34,4 +33,7 @@ html {
     }
 }
 
-body {}
+body {
+    background-color: var(--color-grey);
+
+}

@@ -13,16 +13,6 @@
   }
 }
 
-.app-content {
-  // display: flex;
-  // padding: 1.5rem 1.5rem;
-
-  @media only screen and (max-width:var(--breakpoint-lg)) {
-    flex-direction: column;
-  }
-}
-
-
 .section {
   margin-top: 1rem;
 }
