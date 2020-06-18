@@ -18,7 +18,7 @@ Go to sent tab to check sent mails.
 username: aleksandarustic5@gmail.com
 password: rhic8015
 
-## LOGIN 
+## LOGIN INFO
 
 ### Moderator
 
@@ -29,8 +29,3 @@ password: password
 
 email: manager@app.com
 password: password
-
-## PHPUNIT TESTING
-
-- php artisan migrate:refresh
-- ./vendor/bin/phpunit

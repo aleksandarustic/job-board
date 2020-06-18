@@ -21,5 +21,5 @@ Route::get('job/reject/{token}', 'JobController@reject')->name('job.reject');;
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::resource('job', 'JobController');
+    Route::resource('job', 'JobController')->except('update', 'edit', 'destroy');
 });

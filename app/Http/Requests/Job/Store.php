@@ -4,6 +4,9 @@ namespace App\Http\Requests\Job;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Store
+ */
 class Store extends FormRequest
 {
     /**

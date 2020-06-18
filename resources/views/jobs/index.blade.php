@@ -21,6 +21,7 @@
                         <th scope="col">Description</th>
                         <th scope="col">Hr Manager</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Action</th>
                     </tr>
 
 
@@ -31,6 +32,7 @@
                         <td>{{$job->description}}</td>
                         <td>{{$job->user->name}}</td>
                         <td>{{$job->status}}</td>
+                        <td><a href="{{route('job.show',$job->id)}}"><i class="fas fa-eye"></i></a></td>
                     </tr>
                     @endforeach
 
